@@ -1,13 +1,13 @@
 {
-  "name": "cloudflare-worker-typescript-template",
+  "name": "mint-works-cloudflare-worker",
   "version": "1.0.0",
-  "description": "A TypeScript Template for Cloudflare Workers",
+  "description": "A Cloudflare Worker for the Mint Works game engine",
   "license": "ISC",
   "author": "Ryan Miller",
   "homepage": "https://github.com/aerilym",
   "keywords": [
     "TypeScript",
-    "Template",
+    "Mint Works",
     "Cloudflare",
     "Workers"
   ],

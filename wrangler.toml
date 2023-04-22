@@ -1,15 +1,12 @@
-name = "worker-name"
+name = "mint-works"
 main = "src/index.ts"
-compatibility_date = "2022-08-08"
-
-[dev]
-port=8002
+compatibility_date = "2023-04-04"
 
 [env.stg]
-name = "worker-name-stg"
+name = "mint-works-stg"
 
 [env.prd]
-name = "worker-name"
+name = "mint-works"
 
 [vars]
 # The necessary secrets are:
