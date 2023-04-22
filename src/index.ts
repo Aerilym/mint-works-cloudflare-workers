@@ -52,14 +52,13 @@ async function handleFetch({ request, env }: FetchPayload): Promise<Response> {
 
   const gameId = pathArray[0];
 
-  if (!gameId) return new Response(`Game ID Not Found`, { status: 404 });
-
-  const database = new SupabaseDatabase({ key: env.SUPABASE_URL, url: env.SUPABASE_KEY });
+  const database = new SupabaseDatabase({ url: env.SUPABASE_URL, key: env.SUPABASE_KEY });
 
   switch (servicePath) {
     case 'turn': {
       switch (request.method) {
         case 'GET': {
+          if (!gameId) return new Response(`Game ID Not Found`, { status: 404 });
           const turns = await getTurns({
             gameId,
             database,
@@ -67,6 +66,7 @@ async function handleFetch({ request, env }: FetchPayload): Promise<Response> {
           return new Response(JSON.stringify(turns), { status: 200 });
         }
         case 'PUT': {
+          if (!gameId) return new Response(`Game ID Not Found`, { status: 404 });
           const { turn }: PutTurnBody = await request.json();
           try {
             await applyTurn({
@@ -89,13 +89,19 @@ async function handleFetch({ request, env }: FetchPayload): Promise<Response> {
         case 'POST': {
           const { players }: PostGameBody = await request.json();
           try {
-            const gameId = await createGame({
+            const returnedGameId = await createGame({
               players,
               database,
             });
-            return new Response(JSON.stringify({ gameId }), { status: 200 });
+            return new Response(JSON.stringify({ returnedGameId }), { status: 200 });
           } catch (error) {
-            return new Response(JSON.stringify({ success: false, error }), { status: 500 });
+            if (error instanceof Error) {
+              return new Response(JSON.stringify({ success: false, error: error.message }), {
+                status: 500,
+              });
+            } else {
+              return new Response(JSON.stringify({ success: false, error }), { status: 500 });
+            }
           }
         }
         default:
