@@ -17,6 +17,10 @@
     "dev": "wrangler dev",
     "deploy": "wrangler publish"
   },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.21.0",
+    "mint-works": "ben-cook/mint-works#4bfc726c80392f16630077d9687ef35a019c3454"
+  },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230221.0",
     "@types/node": "^18.14.2",
