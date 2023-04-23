@@ -1,6 +1,10 @@
 name = "mint-works"
 main = "src/index.ts"
-compatibility_date = "2023-04-04"
+compatibility_date = "2023-04-20"
+
+routes = [
+	{ pattern = "mintworksapi.aerilym.com/api/*", zone_id="045e7f5f63fad1f87de323260b700567" },
+]
 
 [env.stg]
 name = "mint-works-stg"

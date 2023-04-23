@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "9b3f80c6-5cc2-4d2b-8129-efbd728582ee",
+		"name": "Mint Works",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create game",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"players\": [\n        {\n            \"name\": \"Player 1\",\n            \"age\": 21,\n            \"tokens\": 3\n        },\n        {\n            \"name\": \"Player 2\",\n            \"age\": 22,\n            \"tokens\": 3\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "mintworksapi.aerilym.com/api/game",
+					"host": [
+						"mintworksapi",
+						"aerilym",
+						"com"
+					],
+					"path": [
+						"api",
+						"game"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get turns",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Play turn",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"turn\": {\"action\":{\"_type\":\"Produce\"},\"playerName\":\"Player 1\"}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mintworksapi.aerilym.com/api/turn/0e4c7899-f58f-4d68-b046-8159b3c9f2fb",
+					"protocol": "https",
+					"host": [
+						"mintworksapi",
+						"aerilym",
+						"com"
+					],
+					"path": [
+						"api",
+						"turn",
+						"0e4c7899-f58f-4d68-b046-8159b3c9f2fb"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "GAME_ID",
+			"value": "e10c88ac-8fa3-48c0-8a10-5f937de94cac"
+		}
+	]
+}
